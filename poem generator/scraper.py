@@ -1,6 +1,8 @@
 from requests import get
 from bs4 import BeautifulSoup
 
+
+
 urls = ["https://www.antoloji.com/ozdemir-asaf/siirleri/",
         "https://www.antoloji.com/ozdemir-asaf/siirleri/ara-/sirala-/sayfa-2/",
         "https://www.antoloji.com/ozdemir-asaf/siirleri/ara-/sirala-/sayfa-3/",
@@ -166,10 +168,93 @@ urls = ["https://www.antoloji.com/ozdemir-asaf/siirleri/",
         "https://www.antoloji.com/naime-ozeren/siirleri/ara-/sirala-/sayfa-5/",
         "https://www.antoloji.com/ayten-ozgun/siirleri/",
         "https://www.antoloji.com/ayten-ozgun/siirleri/ara-/sirala-/sayfa-2/",
-
-
-
-
+        "https://www.antoloji.com/yilmaz-odabasi/siirleri/",
+        "https://www.antoloji.com/yilmaz-odabasi/siirleri/ara-/sirala-/sayfa-2/",
+        "https://www.antoloji.com/ahmet-selcuk-ilkan/siirleri/",
+        "https://www.antoloji.com/ahmet-selcuk-ilkan/siirleri/ara-/sirala-/sayfa-2/",
+        "https://www.antoloji.com/ahmet-selcuk-ilkan/siirleri/ara-/sirala-/sayfa-3/",
+        "https://www.antoloji.com/ahmet-selcuk-ilkan/siirleri/ara-/sirala-/sayfa-4/",
+        "https://www.antoloji.com/ahmet-selcuk-ilkan/siirleri/ara-/sirala-/sayfa-5/",
+        "https://www.antoloji.com/ahmet-selcuk-ilkan/siirleri/ara-/sirala-/sayfa-6/",
+        "https://www.antoloji.com/ahmet-selcuk-ilkan/siirleri/ara-/sirala-/sayfa-7/",
+        "https://www.antoloji.com/ahmet-selcuk-ilkan/siirleri/ara-/sirala-/sayfa-8/",
+        "https://www.antoloji.com/ahmet-selcuk-ilkan/siirleri/ara-/sirala-/sayfa-9/",
+        "https://www.antoloji.com/ahmet-selcuk-ilkan/siirleri/ara-/sirala-/sayfa-10/",
+        "https://www.antoloji.com/ahmet-selcuk-ilkan/siirleri/ara-/sirala-/sayfa-11/",
+        "https://www.antoloji.com/ahmet-selcuk-ilkan/siirleri/ara-/sirala-/sayfa-12/",
+        "https://www.antoloji.com/ceyhun-yilmaz/siirleri/"
+        "https://www.antoloji.com/ceyhun-yilmaz/siirleri/ara-/sirala-/sayfa-2/",
+        "https://www.antoloji.com/ceyhun-yilmaz/siirleri/ara-/sirala-/sayfa-3/",
+        "https://www.antoloji.com/ceyhun-yilmaz/siirleri/ara-/sirala-/sayfa-4/",
+        "https://www.antoloji.com/behcet-aysan/siirleri/",
+        "https://www.antoloji.com/behcet-aysan/siirleri/ara-/sirala-/sayfa-2/",
+        "https://www.antoloji.com/huseyin-yurttas/siirleri/",
+        "https://www.antoloji.com/umit-isikdag/siirleri/",
+        "https://www.antoloji.com/umit-isikdag/siirleri/ara-/sirala-/sayfa-2/",
+        "https://www.antoloji.com/umit-isikdag/siirleri/ara-/sirala-/sayfa-3/",
+        "https://www.antoloji.com/umit-isikdag/siirleri/ara-/sirala-/sayfa-4/",
+        "https://www.antoloji.com/umit-isikdag/siirleri/ara-/sirala-/sayfa-5/",
+        "https://www.antoloji.com/zekeriya-ozhan/siirleri/",
+        "https://www.antoloji.com/zekeriya-ozhan/siirleri/ara-/sirala-/sayfa-2/",
+        "https://www.antoloji.com/zekeriya-ozhan/siirleri/ara-/sirala-/sayfa-3/",
+        "https://www.antoloji.com/zekeriya-ozhan/siirleri/ara-/sirala-/sayfa-4/",
+        "https://www.antoloji.com/zekeriya-ozhan/siirleri/ara-/sirala-/sayfa-5/",
+        "https://www.antoloji.com/zekeriya-ozhan/siirleri/ara-/sirala-/sayfa-6/",
+        "https://www.antoloji.com/saniye-uzun/siirleri/",
+        "https://www.antoloji.com/saniye-uzun/siirleri/ara-/sirala-/sayfa-2/",
+        "https://www.antoloji.com/saniye-uzun/siirleri/ara-/sirala-/sayfa-3/",
+        "https://www.antoloji.com/saniye-uzun/siirleri/ara-/sirala-/sayfa-4/",
+        "https://www.antoloji.com/saniye-uzun/siirleri/ara-/sirala-/sayfa-5/",
+        "https://www.antoloji.com/saniye-uzun/siirleri/ara-/sirala-/sayfa-6/",
+        "https://www.antoloji.com/saniye-uzun/siirleri/ara-/sirala-/sayfa-7/",
+        "https://www.antoloji.com/ozan-fecri-sayir/siirleri/",
+        "https://www.antoloji.com/ozan-fecri-sayir/siirleri/ara-/sirala-/sayfa-2/",
+        "https://www.antoloji.com/ozan-fecri-sayir/siirleri/ara-/sirala-/sayfa-3/",
+        "https://www.antoloji.com/ozan-fecri-sayir/siirleri/ara-/sirala-/sayfa-4/",
+        "https://www.antoloji.com/ozan-fecri-sayir/siirleri/ara-/sirala-/sayfa-5/",
+        "https://www.antoloji.com/ozan-fecri-sayir/siirleri/ara-/sirala-/sayfa-6/",
+        "https://www.antoloji.com/ozan-fecri-sayir/siirleri/ara-/sirala-/sayfa-7/",
+        "https://www.antoloji.com/ozan-fecri-sayir/siirleri/ara-/sirala-/sayfa-8/",
+        "https://www.antoloji.com/ozan-fecri-sayir/siirleri/ara-/sirala-/sayfa-9/",
+        "https://www.antoloji.com/nuri-can/siirleri/ara-/sirala-/",
+        "https://www.antoloji.com/nuri-can/siirleri/ara-/sirala-/sayfa-2/",
+        "https://www.antoloji.com/nuri-can/siirleri/ara-/sirala-/sayfa-3/",
+        "https://www.antoloji.com/nuri-can/siirleri/ara-/sirala-/sayfa-4/",
+        "https://www.antoloji.com/nuri-can/siirleri/ara-/sirala-/sayfa-5/",
+        "https://www.antoloji.com/nuri-can/siirleri/ara-/sirala-/sayfa-6/",
+        "https://www.antoloji.com/nuri-can/siirleri/ara-/sirala-/sayfa-7/",
+        "https://www.antoloji.com/nuri-can/siirleri/ara-/sirala-/sayfa-8/"
+        "https://www.antoloji.com/yasar-tezel/siirleri/",
+        "https://www.antoloji.com/yasar-tezel/siirleri/ara-/sirala-/sayfa-2/",
+        "https://www.antoloji.com/yasar-tezel/siirleri/ara-/sirala-/sayfa-3/",
+        "https://www.antoloji.com/yasar-tezel/siirleri/ara-/sirala-/sayfa-4/",
+        "https://www.antoloji.com/yasar-tezel/siirleri/ara-/sirala-/sayfa-5/",
+        "https://www.antoloji.com/yasar-tezel/siirleri/ara-/sirala-/sayfa-6/",
+        "https://www.antoloji.com/yasar-tezel/siirleri/ara-/sirala-/sayfa-7/",
+        "https://www.antoloji.com/irem-altas/siirleri/",
+        "https://www.antoloji.com/irem-altas/siirleri/ara-/sirala-/sayfa-2/",
+        "https://www.antoloji.com/irem-altas/siirleri/ara-/sirala-/sayfa-3/",
+        "https://www.antoloji.com/mustafa-onder/siirleri/",
+        "https://www.antoloji.com/mustafa-onder/siirleri/ara-/sirala-/sayfa-2/",
+        "https://www.antoloji.com/mustafa-onder/siirleri/ara-/sirala-/sayfa-3/"
+        "https://www.antoloji.com/vedat-okkar/siirleri/",
+        "https://www.antoloji.com/vedat-okkar/siirleri/ara-/sirala-/sayfa-2/",
+        "https://www.antoloji.com/vedat-okkar/siirleri/ara-/sirala-/sayfa-3/",
+        "https://www.antoloji.com/vedat-okkar/siirleri/ara-/sirala-/sayfa-4/",
+        "https://www.antoloji.com/vedat-okkar/siirleri/ara-/sirala-/sayfa-5/",
+        "https://www.antoloji.com/vedat-okkar/siirleri/ara-/sirala-/sayfa-6/",
+        "https://www.antoloji.com/vedat-okkar/siirleri/ara-/sirala-/sayfa-7/",
+        "https://www.antoloji.com/vedat-okkar/siirleri/ara-/sirala-/sayfa-8/",
+        "https://www.antoloji.com/vedat-okkar/siirleri/ara-/sirala-/sayfa-9/",
+        "https://www.antoloji.com/vedat-okkar/siirleri/ara-/sirala-/sayfa-10/",
+        "https://www.antoloji.com/vedat-okkar/siirleri/ara-/sirala-/sayfa-11/",
+        "https://www.antoloji.com/vedat-okkar/siirleri/ara-/sirala-/sayfa-12/",
+        "https://www.antoloji.com/vedat-okkar/siirleri/ara-/sirala-/sayfa-13/",
+        "https://www.antoloji.com/vedat-okkar/siirleri/ara-/sirala-/sayfa-14/",
+        "https://www.antoloji.com/vedat-okkar/siirleri/ara-/sirala-/sayfa-15/",
+        "https://www.antoloji.com/vedat-okkar/siirleri/ara-/sirala-/sayfa-16/",
+        "https://www.antoloji.com/vedat-okkar/siirleri/ara-/sirala-/sayfa-17/",
+        "https://www.antoloji.com/vedat-okkar/siirleri/ara-/sirala-/sayfa-18/",
         ]
 root = "https://www.antoloji.com"
 
@@ -182,13 +267,14 @@ for url in urls:
         scraped[poem.a['title']] = poem.a['href']
 
 for title in scraped:
-    page = get("{root}{scraped[title]}")
+    page = get(f"{root}{scraped[title]}")
     soup = BeautifulSoup(page.text, 'html.parser')
     verse_list = soup.find('div', attrs={'class': 'pd-text'}).findAll('p')
-    with open("all_poems.txt", 'a', encoding='utf-8') as f:
+    with open(f"all_poems.txt", 'a', encoding='utf-8') as f:
         for verse in verse_list:
             f.write(verse.getText() + "\n")
 
 with open('all_poems.txt', 'r', encoding='utf-8') as fin, open('cleaned_poems.txt', 'a', encoding='utf-8') as fout:
     for line in fin:
         fout.write(line)
+
