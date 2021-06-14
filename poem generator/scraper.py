@@ -182,10 +182,10 @@ for url in urls:
         scraped[poem.a['title']] = poem.a['href']
 
 for title in scraped:
-    page = get(f"{root}{scraped[title]}")
+    page = get("{root}{scraped[title]}")
     soup = BeautifulSoup(page.text, 'html.parser')
     verse_list = soup.find('div', attrs={'class': 'pd-text'}).findAll('p')
-    with open(f"all_poems.txt", 'a', encoding='utf-8') as f:
+    with open("all_poems.txt", 'a', encoding='utf-8') as f:
         for verse in verse_list:
             f.write(verse.getText() + "\n")
 
