@@ -11,7 +11,7 @@ def tokenize():
 
     corpus2 = corpus.split('\n')
     corpus1 = ["<s> " + sent + " </s>" for sent in corpus2]
-    tokenizer = get_tokenizer('basic_english')
+    tokenizer = get_tokenizer('basic_english') # Not an english tokenizer, just an argument.
     tokens = []
     for s in corpus1:
         tokens += tokenizer(s)
@@ -22,7 +22,8 @@ def tokenize():
                        'gabriel', "straits'in", "'sabahattin", 'kkabul', "böylece'", 'se', 'nin', '””hayatın',
                        "yi", 'lık', "ming", "'rivayetdi", "peking", "huu", "ı'dir", "hokkaömeroğlu", "topluiğne",
                        "gcceye", "'uzaklara", "'coşkun", "'of'", "bü'yü'r", "zararı'", "yo", "başlıyor'", "eğe",
-                       "olmuşt", "lü", "fazy", "tü", "ydu", "nl" "dı", "çifşeşmeye",  ]
+                       "olmuşt", "lü", "fazy", "tü", "ydu", "nl" "dı", "çifşeşmeye", "sy", "www", "nurican", "mutluk"
+                        "olmyan", ]  # Words with typos that shouldn't appear in the poem.
     filtered_tokens = []
     for w in tokens:
         if w not in unwanted_tokens:
@@ -31,14 +32,15 @@ def tokenize():
 
 
 filtered_tokens = tokenize()
-random_choice_list = []
+random_choice_list = []  # A list to randomly choose a word without start and end tokens.
 for i in filtered_tokens:
     if i != "<s>" and i != "</s>":
         random_choice_list.append(i)
 
 
-def singleverse(num):
-    """Generates bigrams, calculates their frequency and probabilities and
+def singleverse(num): # Takes an argument for the length of the line.
+    """
+    Generates bigrams, calculates their frequency and probabilities and
     generates a poem line starting with a random word.
     """
     ts_bigrams = [(filtered_tokens[i], filtered_tokens[i + 1]) for i in range(len(filtered_tokens) - 1)]
@@ -46,7 +48,12 @@ def singleverse(num):
     bigram_pbs = nltk.ConditionalProbDist(bigram_cfd, nltk.MLEProbDist)
 
     seedword = random.choice(random_choice_list)
-    start_word = seedword
+    banned_words = ['ile', 'misin', 'mısın', 'müsün', 'musun', 'mi', 'mu', 'mı', 'mü', 've', 'gibi']  # Limits the  words that can appear line initially.
+    if seedword in banned_words:
+        seedword = random.choice(random_choice_list)
+    else:
+        seedword = seedword
+    start_word = seedword.lower()
     data = []
     for i in range(num):
         probable_words = list(bigram_pbs[start_word].samples())
@@ -60,14 +67,21 @@ def singleverse(num):
     a = seedword
     line.insert(0, a)
     for i in data:
-        if i != "<s>" and i != "</s>":
+        if i != "<s>" and i != "</s>":  # Removes start and end tokens from the output.
             line.append(i)
-    poem_line = ' '.join([str(i) for i in line]).capitalize()
-    print(poem_line)
+    poem_line = ' '.join([str(i) for i in line])
+
+    line_words = poem_line.split()
+    banned_end_words = ['ile', 've', 'bir', 'her', 'bu', 'şu', 'bi', 'in']  # Limits the words that can appear as final.
+    if line_words[-1] in banned_end_words:
+        line_words.remove(line_words[-1])
+    line = ' '.join([str(i) for i in line_words]).capitalize()
+    print(line)
 
 
-def firstverse(num, seedword):
-    """Generates bigrams, calculates their frequency and probabilities and
+def firstverse(num, seedword):  # Takes two arguments for length of line and start word.
+    """
+    Generates bigrams, calculates their frequency and probabilities and
     generates a poem line with given input.
     """
     ts_bigrams = [(filtered_tokens[i], filtered_tokens[i + 1]) for i in range(len(filtered_tokens) - 1)]
@@ -91,8 +105,14 @@ def firstverse(num, seedword):
     for i in data:
         if i != "<s>" and i != "</s>":
             line.append(i)
-    poem_line = ' '.join([str(i) for i in line]).capitalize()
-    print(poem_line)
+    poem_line = ' '.join([str(i) for i in line])
+
+    line_words = poem_line.split()
+    banned_end_words = ['ile', 've', 'bir', 'her', 'bu']
+    if line_words[-1] in banned_end_words:
+        line_words.remove(line_words[-1])
+    line = ' '.join([str(i) for i in line_words]).capitalize()
+    print(line)
 
 
 def generate():
@@ -100,14 +120,14 @@ def generate():
     print("What structure do you want?(e.g., 3 x 4, 2 x 4, 2 x 5): ")
     while True:
         try:
-            x, y, z = input().split()
+            x, y, z = input().split()  # Input for poem structure.
         except:
             print("Enter the structure as shown above")
             continue
         break
-    num = random.randint(5, 8)
+    num = random.randint(7, 8)
     while True:
-        seedword = str(input("Enter a seed word: "))
+        seedword = str(input("Enter a seed word: "))  # Input for start word.
         try:
             for stanza in range(1):
                 for first_verse in range(1):
