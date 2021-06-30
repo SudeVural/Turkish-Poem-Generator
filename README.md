@@ -1,8 +1,17 @@
 # Turkish Poem Generator
  A poem generator that uses an N-gram language model.  
+ 
+ We implemented bigram and trigram models; however, they are completely separate models. We just wanted to see how different outputs they would generate.
+ Bigram model is more random and meaningless as we have predicted. We included ngram counts and the frequency distributions as extras.
+ 
+The program takes two inputs: one for the structure (e.g. 1 x 3, 2 x 4) and the other for the starting word. Note that this start word begins the poem and it doesn't have any impact on the rest of the poem.
 
-The generator is still incomplete. Our models mostly work but they do not meet our initial goals.
-Bigram model is complete. However, since it is a bigram model it is rather meaningless for a poem. Though, this is what we have expected at the beginning.
-We implemented a different function for the first verses that takes an input as the seed word.
-
-We have some ideas that we did not yet have a chance to code. We want to limit which words can occur at the end of a line by implementing a code (probably with start and end tokens). And we would like to add a rhyme generator.
+Packages used:
+ BeautifulSoup, 
+ NLTK,
+ Re,
+ Random,
+ Scipy,
+ TorchText.
+ 
+ 
